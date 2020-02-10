@@ -1,0 +1,22 @@
+{
+  "name": "mern_team_creator",
+  "version": "1.0.0",
+  "description": "MERN application for creating teams",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js", 
+    "server": "nodemon server.js"
+  },
+  "author": "Sergio Perez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
