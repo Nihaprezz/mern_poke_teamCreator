@@ -18,7 +18,9 @@ mongoose.connect(uri, {
     useUnifiedTopology: true
 }).then(() => {
     console.log('MongoDB Connected...')
-})
+}).catch(err => console.log(err))
+
+
 
 
 app.listen(port, () => {
