@@ -19,8 +19,15 @@ mongoose.connect(uri, {
 }).then(() => {
     console.log('MongoDB Connected...')
 }).catch(err => console.log(err))
+mongoose.set('useCreateIndex', true)
 
 
+//ROUTES TO USE
+const usersRouter = require('./routes/users');
+const exercisesRouter = require('./routes/exercises');
+
+app.use('/users', usersRouter);
+app.use('/exercises', exercisesRouter)
 
 
 app.listen(port, () => {
