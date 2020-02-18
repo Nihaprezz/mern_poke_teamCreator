@@ -26,8 +26,10 @@ mongoose.set('useCreateIndex', true)
 
 //ROUTES TO USE
 const usersRouter = require('./routes/users');
+const teamsRouter = require('./routes/team');
 
 app.use('/users', usersRouter);
+app.use('/teams', teamsRouter);
 
 
 app.listen(port, () => {
