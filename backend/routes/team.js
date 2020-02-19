@@ -4,7 +4,14 @@ let router = express.Router();
 
 
 router.get('/generate', function(req, res){
-    res.json('Team Generated!')
+    let randomPk = []
+
+    for(let i = 1; i <= 6; i++){
+        let randomNum = Math.floor(Math.random() * 151)
+        randomPk.push(randomNum)
+    }
+
+    res.json(randomPk.map(num => pokemonGif(num))) 
 })
 
 
