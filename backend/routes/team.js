@@ -1,5 +1,7 @@
 const express = require('express');
 const pokemonGif = require('pokemon-gif');
+
+let Team = require('../models/team.model')
 let router = express.Router();
 
 
@@ -12,6 +14,21 @@ router.get('/generate', function(req, res){
     }
 
     res.json(randomPk.map(num => pokemonGif(num))) 
+})
+
+router.post('/add', function(req, res) {
+    const teamname = req.body.teamname;
+    const pokemons = req.body.pokemons;
+
+
+    const newTeam = new Team ({
+        teamname, 
+        pokemons
+    })
+
+    newTeam.save()
+    .then(() => res.json(newTeam))
+    .catch(err => res.status(400).json('Error: ' + err))
 })
 
 
