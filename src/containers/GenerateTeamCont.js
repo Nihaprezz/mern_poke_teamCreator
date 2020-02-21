@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import PokemonCard from "../components/PokemonCard"
 
 const axios = require('axios');
-
 let backend = `http://localhost:5000`
 
 const GenerateTeamContainer = () => {
