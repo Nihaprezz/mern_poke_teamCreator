@@ -33,7 +33,7 @@ const GenerateTeamContainer = () => {
 
     return (
         <div>
-
+            
             <button onClick={() => generateNew()}>Generate</button>
 
             <div>

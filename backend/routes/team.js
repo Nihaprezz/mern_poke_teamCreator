@@ -4,6 +4,12 @@ const pokemonGif = require('pokemon-gif');
 let Team = require('../models/team.model')
 let router = express.Router();
 
+router.get("/", function(req, res){
+    Team.find()
+    .then( teams => res.json(teams) )
+    .catch( err => res.status(400).json('Error: ' + err))
+})
+
 
 router.get('/generate', function(req, res){
     let randomPk = []

@@ -8,6 +8,7 @@ function App() {
     <div className="App">
         <h1>Pokemon Team Generator</h1>
         < GenerateTeamContainer />
+        
     </div>  
   );
 }
