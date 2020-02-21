@@ -10,7 +10,7 @@ router.get("/", function(req, res){
     .catch( err => res.status(400).json('Error: ' + err))
 })
 
-
+//auto generates 6 gif urls
 router.get('/generate', function(req, res){
     let randomPk = []
 
@@ -35,6 +35,12 @@ router.post('/add', function(req, res) {
     newTeam.save()
     .then(() => res.json(newTeam))
     .catch(err => res.status(400).json('Error: ' + err))
+})
+
+router.get("/:id", function(req, res){
+    Team.findById(req.params.id)
+    .then(team => res.send(team))
+    .catch(err => res.status(400).json('Error: '+ err))
 })
 
 
