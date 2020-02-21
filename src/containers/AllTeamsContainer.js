@@ -5,7 +5,7 @@ import PokemonTeam from "../components/PokemonTeam";
 const axios = require('axios');
 let backend = `http://localhost:5000`
 
-const AllTeamsContainer = (props) => {
+const AllTeamsContainer = () => {
     const [allTeams, setAllTeams] = useState([]);
 
     useEffect(() => {

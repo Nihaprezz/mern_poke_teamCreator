@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PokemonTeam = (props) => {
-    const {teamname, createdAt} = props.teamObj
-    console.log(props.teamObj.pokemons)
+    const {teamname, createdAt, _id} = props.teamObj
+
     return (
         <div>
             <h1>{teamname}</h1>
@@ -15,6 +16,8 @@ const PokemonTeam = (props) => {
                     </div>
                 )
             })}
+
+            <button> <Link to={`/team/${_id}/edit`}>Edit Team</Link></button>
         </div>
     )
 }
