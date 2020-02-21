@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
+import PokemonTeam from "../components/PokemonTeam";
+
 const axios = require('axios');
 let backend = `http://localhost:5000`
 
@@ -14,7 +17,13 @@ const AllTeamsContainer = (props) => {
     return (
         <div>
             This will be the all teams container
+            {allTeams.map(team => {
+                return <PokemonTeam key={team._id} teamObj={team}/>
+            })}
 
+            <button>
+                <Link to="/">Back Home</Link>
+            </button>
         </div>
     )
 }
