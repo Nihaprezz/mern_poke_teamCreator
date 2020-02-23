@@ -1,7 +1,8 @@
 import React from "react"
 
 const PokemonEdit = (props) => {
-    let {pokename, pokegif, _id} = props.pkmObj
+    let {pokename, pokegif, _id} = props.pkmObj;
+    
     return (
         <div>
             <img alt="pokegif" src={pokegif}></img>

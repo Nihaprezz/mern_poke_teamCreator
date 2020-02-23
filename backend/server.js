@@ -20,7 +20,7 @@ mongoose.connect(uri, {
 .then(() => {
     console.log('MongoDB Connected...')
 })
-.catch(err => console.log(err))
+.catch(err => console.log("Error: " + err))
 mongoose.set('useCreateIndex', true)
 
 

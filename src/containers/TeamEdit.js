@@ -5,35 +5,42 @@ const axios = require('axios');
 let backend = `http://localhost:5000`
 
 const TeamEdit = (props) => {
-    const [team, setTeam] = useState([])
+    const [teaminfo, setTeaminfo] = useState([])
+    const [pokemon, setPokemon] = useState([])
+
 
     useEffect(() => {
         axios.get(backend + `/teams/${props.teamId}`)
-        .then(resp => setTeam(resp.data))
+        .then(resp => {
+            setTeaminfo(resp.data)
+            setPokemon(resp.data.pokemons)
+        })
         .catch(error => console.log(error))
-    },[])  
+    },[props.teamId])  
     //without empty array it continues to fetch from the backend?
 
     const removeTeam = (pokeId) => {
-        console.log('attempting to remove this pokemon', pokeId)
-        console.log('current team: ', team.pokemons)
-        let updatedPokemons = [...team.pokemons].filter(pkm => pkm._id !== pokeId)
-        console.log(updatedPokemons)
-        team.pokemons = updatedPokemons
-        console.log(team.pokemons )
-        setTeam(team)
+        let updatedPokemons = [...pokemon].filter(pkm => pkm._id !== pokeId)
+        setPokemon(updatedPokemons)
+    }
 
-        //WHEN TEAM IS UPDATING, REACT IS NOT RE-RENDERING....
+    const updateTeam = () => {
+        console.log('atttempting to save team', pokemon)
+        console.log('the team id is ', teaminfo._id)
     }
   
     return(
         <div>
             <h1>Team Edit </h1>
-            <h1> Team Name: {team.teamname}</h1>
+            <h1> Team Name: {teaminfo.teamname}</h1>
 
-            {team.pokemons ? (
+            <button onClick={() => updateTeam()}>Save Team</button>
+
+            <hr></hr>
+
+            {pokemon.length !== 0 ? (
                  <div>
-                   {team.pokemons.map(pkm => {
+                   {pokemon.map(pkm => {
                        return (
                         < PokemonEdit key={pkm._id} pkmObj={pkm} remove={removeTeam}/>
                        )
