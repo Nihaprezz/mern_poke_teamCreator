@@ -25,8 +25,11 @@ const TeamEdit = (props) => {
     }
 
     const updateTeam = () => {
-        console.log('atttempting to save team', pokemon)
-        console.log('the team id is ', teaminfo._id)
+        axios.post(backend + `/teams/update/${teaminfo._id}`, pokemon) 
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(error => console.log(error)) 
     }
   
     return(
