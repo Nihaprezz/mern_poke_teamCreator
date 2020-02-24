@@ -20,25 +20,35 @@ const TeamEdit = (props) => {
     },[props.teamId])  
     //without empty array it continues to fetch from the backend?
 
-    const removeTeam = (pokeId) => {
-        let updatedPokemons = [...pokemon].filter(pkm => pkm._id !== pokeId)
-        setPokemon(updatedPokemons)
-    }
-
     const updateTeam = () => {
         axios.post(backend + `/teams/update/${teaminfo._id}`, pokemon) 
         .then(res => {
+            debugger
             console.log(res.data) //need to give a message to user with success
         })
         .catch(error => console.log(error)) 
     }
 
+    const removeTeam = (pokeId) => {
+        if(pokemon.length === 1){
+            alert("Team needs to have at least 1 Pokemon!")
+        } else {
+           let updatedPokemons = [...pokemon].filter(pkm => pkm._id !== pokeId)
+           setPokemon(updatedPokemons) 
+        }
+    }
+
     const addPkm = (pkmSprite) => {
-        // let pkmObj = {}
-        // pkmObj["pokename"] = pkmSprite.split("xy/")[1].split('.gif')[0]
-        // pkmObj["pokegif"] = pkmSprite
-        // setPokemon(pokemon.push(pkmObj))
-        console.log('adding ....', pkmSprite)
+        if(pokemon.length === 6) {
+            alert('Team cannot exceed 6 Pokemon!')
+        } else {
+            let pkmObj = {}
+            pkmObj["pokename"] = pkmSprite.split("xy/")[1].split('.gif')[0]
+            pkmObj["pokegif"] = pkmSprite
+        
+            let updatedPokemons = [...pokemon, pkmObj]
+            setPokemon(updatedPokemons)           
+        }
     }
   
     return(

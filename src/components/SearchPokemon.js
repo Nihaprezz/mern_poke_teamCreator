@@ -23,13 +23,7 @@ const SearchPokemon = (props) => {
     }   
 
     return (
-        <div> 
-            <form onSubmit={(e) =>  searchGifs(e)}>
-                <label>Search Pokemon</label>
-                <input type="text" name="pokemon" onChange={(e) => handleChange(e)} ></input>
-                <input type="submit"></input>
-            </form>
-                
+        <div>                 
             <div>
             {newPkm.includes('sprites') ? (
                 <div>
@@ -38,6 +32,12 @@ const SearchPokemon = (props) => {
                 </div>
             ) : newPkm}
             </div>
+
+            <form onSubmit={(e) =>  searchGifs(e)}>
+                <label>Search Pokemon</label>
+                <input type="text" name="pokemon" onChange={(e) => handleChange(e)} ></input>
+                <input type="submit"></input>
+            </form>
         </div>
     )
 }
