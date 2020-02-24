@@ -44,9 +44,13 @@ router.get("/:id", function(req, res){
 })
 
 router.post("/update/:id", function(req, res){
+    let teamname = req.body.teamname
+    let pokemons = req.body.pokemons
+
     Team.findById(req.params.id)
     .then( team => {
-        team.pokemons = req.body;
+        team.teamname = teamname;
+        team.pokemons = pokemons;
         team.save()
         .then(() =>  res.json('Pokemon Team Updated!'))
         .catch(err => res.status(400).json('Error: ' + err))

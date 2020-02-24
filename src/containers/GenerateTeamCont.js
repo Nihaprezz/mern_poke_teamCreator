@@ -6,6 +6,7 @@ let backend = `http://localhost:5000`
 
 const GenerateTeamContainer = () => {
     const [ team, setTeam ] = useState([])
+    const [ name, setName ] = useState('')  
 
     const generateNew = () => {
         axios.get(backend + '/teams/generate')
@@ -14,7 +15,7 @@ const GenerateTeamContainer = () => {
     }
 
     const saveTeam = () => {
-        let teamname = 'serg'
+        let teamname = name ? name : 'PokeTeam'
         let pokemons = team.map(pkm => {
             return {
                 pokename: pkm.split("xy/")[1].split('.gif')[0], 
@@ -31,11 +32,22 @@ const GenerateTeamContainer = () => {
         .catch(error => console.log(error))
     }
 
+    const handleTeamname = (e) => {
+        setName(e.target.value)
+    }
+
     return (
         <div>
             
             <button onClick={() => generateNew()}>Generate</button>
-
+                            
+            {team.length !== 0 ? (
+                <div>
+                    <label>Username</label>
+                    <input type="text" onChange={(e) =>  handleTeamname(e)}></input>
+                </div>
+            ): null}
+ 
             <div>
                 {team.map((sprite, index) => {
                     return < PokemonCard key={index} sprite={sprite}/>
