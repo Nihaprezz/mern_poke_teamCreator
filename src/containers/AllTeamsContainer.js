@@ -18,7 +18,7 @@ const AllTeamsContainer = () => {
         axios.delete(backend + `/teams/${teamId}`)
         .then(response => {
             let filtered = [...allTeams].filter(team => team._id !== response.data._id)
-            setAllTeams(filtered)
+            setAllTeams(filtered)   //need to alert user that the team has been deleted
         })
         .catch(err => console.log(err))
     }
