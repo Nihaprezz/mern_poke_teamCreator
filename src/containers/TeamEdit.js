@@ -23,7 +23,6 @@ const TeamEdit = (props) => {
     const updateTeam = () => {
         axios.post(backend + `/teams/update/${teaminfo._id}`, pokemon) 
         .then(res => {
-            debugger
             console.log(res.data) //need to give a message to user with success
         })
         .catch(error => console.log(error)) 

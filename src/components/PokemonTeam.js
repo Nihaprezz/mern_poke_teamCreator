@@ -18,6 +18,7 @@ const PokemonTeam = (props) => {
             })}
 
             <button> <Link to={`/team/${_id}/edit`}>Edit Team</Link></button>
+            <button onClick={() => props.deleteTeam(_id)}>Delete Team</button>
         </div>
     )
 }

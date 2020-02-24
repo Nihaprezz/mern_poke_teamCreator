@@ -13,12 +13,21 @@ const AllTeamsContainer = () => {
         .then(response => setAllTeams(response.data))
         .catch(err => console.log('The error was caught: ', err ))
     }, [])
+
+    const deleteTeam = (teamId) => {
+        axios.delete(backend + `/teams/${teamId}`)
+        .then(response => {
+            let filtered = [...allTeams].filter(team => team._id !== response.data._id)
+            setAllTeams(filtered)
+        })
+        .catch(err => console.log(err))
+    }
     
     return (
         <div>
             This will be the all teams container
             {allTeams.map(team => {
-                return <PokemonTeam key={team._id} teamObj={team}/>
+                return <PokemonTeam key={team._id} teamObj={team} deleteTeam={deleteTeam}/>
             })}
 
             <button>

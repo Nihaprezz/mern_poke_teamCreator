@@ -54,5 +54,11 @@ router.post("/update/:id", function(req, res){
     .catch(err => res.status(400).json('Error: ' + err))
 })
 
+router.delete("/:id", function(req, res){
+    Team.findByIdAndDelete(req.params.id)
+    .then(team => res.json(team))
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
 
 module.exports = router
