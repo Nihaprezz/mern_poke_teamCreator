@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import PokemonCard from "../components/PokemonCard"
+import "../styles/Home.css"
 
 const axios = require('axios');
 let backend = `http://localhost:5000`
@@ -37,13 +38,13 @@ const GenerateTeamContainer = () => {
     }
 
     return (
-        <div>
+        <div className="home-screen">
             
             <button onClick={() => generateNew()}>Generate</button>
                             
             {team.length !== 0 ? (
                 <div>
-                    <label>Username</label>
+                    <label>Team Name </label>
                     <input type="text" onChange={(e) =>  handleTeamname(e)}></input>
                 </div>
             ): null}
