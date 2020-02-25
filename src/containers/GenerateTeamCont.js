@@ -49,7 +49,7 @@ const GenerateTeamContainer = () => {
                 </div>
             ): null}
  
-            <div>
+            <div className="pokemon-cards">
                 {team.map((sprite, index) => {
                     return < PokemonCard key={index} sprite={sprite}/>
                 })}

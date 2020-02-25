@@ -5,11 +5,18 @@ const PokemonCard = (props) => {
     let pokeName = sprite.split("xy/")[1].split('.gif')[0]
 
     return (
-        <div> 
-            <img alt="pokemon-gif" src={sprite}></img>
-             <p>{pokeName}</p>            
+        <div className="uk-card uk-card-default my-card-style"> 
+
+            <div className="card-sprite">
+              <img alt="pokemon-gif" src={sprite}></img>  
+            </div>
+
+            <div className="card-name">
+              <p>{pokeName}</p>   
+            </div>         
         </div>
     )
 }
 
 export default PokemonCard
+
