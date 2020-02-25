@@ -25,7 +25,6 @@ const AllTeamsContainer = () => {
     
     return (
         <div>
-            This will be the all teams container
             {allTeams.map(team => {
                 return <PokemonTeam key={team._id} teamObj={team} deleteTeam={deleteTeam}/>
             })}
